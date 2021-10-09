@@ -1,0 +1,3 @@
+# Traducciones
+
+## Tabla de traducciones

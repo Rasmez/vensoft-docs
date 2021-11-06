@@ -7,11 +7,10 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-        python-version: [ 3.8 ]
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
 
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +18,8 @@ jobs:
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
-          python-version: ${{ matrix.python-version }}
-          architecture: x64
+          python-version: '3.8'
+      
       - name: Upgrade pip
         run: |
           # install pip=>20.1 to use "pip cache dir"
@@ -50,6 +49,4 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-
-
+          publish_dir: ./site

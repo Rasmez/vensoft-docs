@@ -13,5 +13,5 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material mkdocs-localsearch mkdocs-print-site-plugin html5lib htmlark
-      - run: mkdocs gh-deploy --force -c --no-directory-urls -v
+      - run: mkdocs gh-deploy --force --config-file ../mkdocs.yml -c --no-directory-urls -v
       - run: htmlark site/print_page.html -o standalone.html

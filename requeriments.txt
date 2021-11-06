@@ -1,3 +1,5 @@
+###### Requirements without Version Specifiers ######
+mkdocs
 mkdocs-material
 mkdocs-localsearch
 mkdocs-print-site-plugin
